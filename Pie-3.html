@@ -1,0 +1,176 @@
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <style type="text/css">
+      .palette {
+        display: inline-flex;
+        padding: 5px;
+        cursor: pointer;
+      }
+      .selected {
+        background-color: gray;
+      }
+      .visualization {
+        padding: 15px;
+        display: inline-flex;
+      }
+      .legend {
+        display: inline-flex;
+      }
+      .question {
+        padding: 10px;
+      }
+    </style>
+</head>
+
+<body onload="displayVisualization()">
+  <h2 style="padding: 10px;">Respondents to statement: "The Mayor has handled the security situation well"</h2>
+
+  <div class="visualization">
+    <svg id="viz" width="250" height="250"> </svg>
+  </div>
+  <div class="legend">
+    <svg id="leg" height=300 width=450></svg>
+  </div>
+  <div class="question">
+  <div>
+    Choose the most appropriate color palette for the visualization above
+  </div>
+    <div id="colorselectors">
+      <div class="palette cat1 selected" onclick="selectpalette(this)">
+        <svg width="75" height="15">
+          <rect fill="rgb(228,26,28)" width="15" height="15" x="0"></rect>
+          <rect fill="rgb(55,126,184)" width="15" height="15" x="15"></rect>
+          <rect fill="rgb(77,175,74)" width="15" height="15" x="30"></rect>
+          <rect fill="rgb(152,78,163)" width="15" height="15" x="45"></rect>
+          <rect fill="rgb(255,127,0)" width="15" height="15" x="60"></rect>
+        </svg>
+      </div>
+      <div class="palette seq1" onclick="selectpalette(this)">
+        <svg width="75" height="15">
+          <rect fill="rgb(237,248,251)" width="15" height="15" x="0"></rect>
+          <rect fill="rgb(178,226,226)" width="15" height="15" x="15"></rect>
+          <rect fill="rgb(102,194,164)" width="15" height="15" x="30"></rect>
+          <rect fill="rgb(44,162,95)" width="15" height="15" x="45"></rect>
+          <rect fill="rgb(0,109,44)" width="15" height="15" x="60"></rect>
+        </svg>
+      </div>
+      <div class="palette div1" onclick="selectpalette(this)">
+        <svg width="75" height="15">
+          <rect fill="rgb(202,0,32)" width="15" height="15" x="0"></rect>
+          <rect fill="rgb(244,165,130)" width="15" height="15" x="15"></rect>
+          <rect fill="rgb(247,247,247)" width="15" height="15" x="30"></rect>
+          <rect fill="rgb(146,197,222)" width="15" height="15" x="45"></rect>
+          <rect fill="rgb(5,113,176)" width="15" height="15" x="60"></rect>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="question">
+    <form action = "">
+      <div>Describe why You think this is the most appropriate choice (min 150 characters)</div>
+      <br>
+      <textarea rows = "5" cols = "40" name = "description">
+      </textarea><br>
+   </form>
+  </div>
+
+  <div class="question">
+    <form action="">
+      <div>What percentage of respondents strongly agree?</div>
+      <input type="radio" name="gender" value="10%"> 10%<br>
+      <input type="radio" name="gender" value="80%"> 33%<br>
+      <input type="radio" name="gender" value="40%"> 66%
+    </form>
+  </div>
+  <div class="question">
+    <button style="margin-left: 450px;" onclick="location.href='pie-4.html'">Next</button>
+  </div>
+</body>
+
+<script>
+var cat1 = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'];
+var seq1 = ['#edf8fb','#b2e2e2','#66c2a4','#2ca25f','#006d2c'];
+var div1 = ['#ca0020','#f4a582','#f7f7f7','#92c5de','#0571b0'];
+var selectedpalette = cat1; //randomize this later?
+
+function selectpalette(elem){
+  var a = document.getElementsByClassName('palette')
+  for (i = 0; i < a.length; i++) {
+    a[i].classList.remove('selected');
+  }
+  selectedpalette = eval(elem.classList[1]);
+  elem.classList.add('selected');
+  displayVisualization();
+}
+
+function displayVisualization(){
+  var data = [1, 2, 3, 4, 5];
+    
+    var svg = d3.select("#viz");
+    svg.selectAll("*").remove();
+    var svg = d3.select("#viz"),
+        width = svg.attr("width"),
+        height = svg.attr("height"),
+        radius = Math.min(width, height) / 2,
+        g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var color = d3.scaleOrdinal(selectedpalette);
+    
+    var pie = d3.pie();
+
+    var arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius);
+
+    var arcs = g.selectAll("arc")
+                .data(pie(data))
+                .enter()
+                .append("g")
+                .attr("class", "arc")
+
+    arcs.append("path")
+        .attr("fill", function(d, i) {
+            return color(i);
+        })
+        .attr("d", arc)
+        .style("stroke", "#d6d6d6")
+        .style("stroke-width", "1")
+  displayLegend();
+}
+
+function displayLegend(){
+  var Svg = d3.select("#leg")
+  Svg.selectAll("*").remove();
+
+  var keys = ["Strongly Agree", "Agree", "Neither Agree nor Disagree", "Disagree", "Strongly Disagree"]
+
+  var color = d3.scaleOrdinal(selectedpalette)
+    .domain(keys.reverse())
+    //.range(d3.schemeSet2);
+
+  Svg.selectAll("mydots")
+    .data(keys)
+    .enter()
+    .append("circle")
+      .attr("cx", 100)
+      .attr("cy", function(d,i){ return 200 - i*25}) 
+      .attr("r", 7)
+      .style("fill", function(d){ return color(d)})
+
+  Svg.selectAll("mylabels")
+    .data(keys)
+    .enter()
+    .append("text")
+      .attr("x", 120)
+      .attr("y", function(d,i){ return 200 - i*25}) 
+      .text(function(d){ return d})
+      .attr("text-anchor", "left")
+      .style("alignment-baseline", "middle")
+}
+
+</script>
+
+</html>
