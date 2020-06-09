@@ -1,0 +1,66 @@
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+    .consent {
+      background-color: #d6d6d6;
+      padding: 5px 15px;
+    }
+    form{
+      padding: 10px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="container main">
+  <h1>Exploring Colour Palette Usage in the Design of Data Visualizations</h1>
+  <h3>Background data</h2>
+      <div class="form-group">
+        <label for="exampleInputEmail1">What is your age?</label>
+        <input type="number" class="form-control" id="exampleAge1"  placeholder="">
+      </div>
+      <div>
+        <label>What is your gender?</label>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Male</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Female</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Other</label>
+        </div>
+    </div>
+      <div>
+        <label>What is the highest level of education you have completed?</label>
+        <div class="radio">
+          <label><input type="radio" name="optradio2">Primary School</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio2">Secondary school (High school)</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio2">Undergraduate degree (B.A., B.Sc., etc.)</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio2">Graduate or professional degree (M.A., M.Sc., J.D., etc.)</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio2">Doctoral degree (Ph.D, M.D., etc.)</label>
+        </div>
+    </div>
+      <button style="float: right;" type="submit" class="btn btn-primary" onclick="next_page()">Next</button>
+</body>
+
+<script>
+function next_page()
+{
+  console.log("here")
+  location.href = 'pie-1.html';
+} 
+</script>
+
+</html>

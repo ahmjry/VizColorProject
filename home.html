@@ -1,0 +1,100 @@
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+    .consent {
+      background-color: #d6d6d6;
+      padding: 5px 15px;
+    }
+    form{
+      padding: 10px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="container main">
+  <h1>Exploring Colour Palette Usage in the Design of Data Visualizations</h1>
+  <div class="consent">
+  <h3>Consent Form</h2>
+  <p><strong>Researcher:</strong>  Jarryullah Ahmad</p>
+
+  <p><strong>Affiliation:</strong> Department of Computer Science, University of Toronto</p>
+
+<p><strong>Background and Purpose</strong></p>
+
+<p>You are invited to participate in a research study investigating color usage in creating data visualizations. 
+  This research involves a questionnaire that will evaluate your education level, level of familiarity with charts, 
+  and your ability to answer questions from data visualizations and an experiment involving selection of appropriate color 
+  palettes for certain visualizations.</p>
+
+<p><strong>Eligibility Criteria</strong></p>
+<p>To participate you must be in 18 years of age or older and be comfortable with communicating in English.</p>
+
+<p><strong>Voluntary Participation & Early Withdrawal</strong></p>
+<p>Your decision to participate is voluntary and you are free to withdraw at any time without any consequences. 
+  You are not required to answer any questions you do not feel comfortable answering.</p>
+
+<p>Upon completion of the experiment, you will be given a participant ID to submit on the Amazon Mechanical Turk website. 
+  You can withdraw from the study either by not submitting your participant ID, or by emailing the researchers with your 
+  participant ID and requesting to withdraw. In both cases your data will be destroyed and not included in the published 
+  results of the research study. After results are made public, anonymized data may be shared publicly and you will no longer 
+  be able to withdraw from the study.</p>
+
+<p><strong>Confidentiality and Privacy</strong></p>
+<p>You will not be asked to share your name and participants will be referred to as a participant ID number only. 
+  During data collection, data will be stored on a secure, encrypted server. After completion of the experiment, data
+   will be stored on an encrypted hard drive of a password-protected lab computer that is only accessible by the researcher.</p>
+
+<p><strong>By submitting this form, you indicate that you understand the following:</strong></p>
+<p>-	The purpose of the study is to understand color usage in creating data visualizations;</p>
+<p>-	I agree to have my responses recorded, as well as the amount of time spent using any interactive elements in the
+   questionnaire; </p>
+<p>-	The researchers do not foresee any risks or stresses beyond what one might experience in a typical day of work;</p>
+<p>-	I will be compensated between $1.16 (CAD) (*)  for the session;</p>
+<p>-	I will only be compensated if I successfully complete the questionnaire;</p>
+<p>-	I am free to withdraw from the study at any time before the results of the study are made public 
+  (even after the completion of the study) and if I do wish so, the researcher will also destroy all respective 
+  data collected insofar;</p>
+<p>-	All data collected in this study will be kept secure. Responses will be stored in a secure device. 
+  Only the researchers involved in this study will have access. In all data files, my responses will be identified 
+  with a code in order to preserve confidentiality. All data containing potentially identifying information will 
+  be destroyed 3 years after publication of results;</p>
+<p>-	Data collected may be used in research journals, conferences, or other scholarly activities, or it may 
+  be shared publicly with other researchers. In these cases, no identifying information will be provided to the audience;</p>
+<p>-	I am at least 18 years of age;</p>
+<p>-	I am free to ask questions about the process at any time. I can ask by contacting:<br>
+Jarryullah Ahmad: j.ahmad@mail.utoronto.ca, (647) 290-3701<br>
+Fanny Chevalier: fanny@cs.toronto.edu, (416) 978-4391</p>
+<p>-	If requested, I will receive a copy of this form for my records;</p>
+<p>-	To learn about publications arising from this work, I can visit http://www.cs.toronto.edu/~fanny/publications, or email 
+  the researchers at the email addresses provided above;</p>
+
+<p>The research study you are participating in may be reviewed for quality assurance to make sure that the required laws and 
+    guidelines are followed. If chosen, (a) representative(s) of the Human Research Ethics Program (HREP) may access 
+    study-related data and/or consent materials as part of the review. All information accessed by the HREP will be upheld 
+    to the same level of confidentiality that has been stated by the research team. </p>
+
+<p>If you have any questions about your rights as a participant, please contact the University of Toronto Ethics Review Office at 
+ethics.review@utoronto.ca or (416) 946-3273.</p>
+</div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">I have read and understood the above information</label>
+    </div>
+  <button style="float: right;" type="submit" class="btn btn-primary" onclick="next_page()">Next</button>
+</div>
+  
+</body>
+
+<script>
+function next_page()
+{
+  console.log("here")
+  location.href = 'data.html';
+} 
+</script>
+
+</html>
